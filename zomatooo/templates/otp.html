@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Enter Otp{% endblock title %}
+{% block body %}
+<form action="otp" method="post">
+{% csrf_token %}
+<label for="otp">Enter otp</label>
+<input type="text" name="otp">
+<input type="submit" value="SUBMIT">
+{{s.as_p}}
+</form>
+{% endblock body %}

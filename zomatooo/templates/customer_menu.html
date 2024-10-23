@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+customer_menu
+{% endblock title %}
+
+{% block body %}
+<div style="display: flex;">
+    {% for item in items %}
+    <form action="{% url 'addtocart' %}" method="post">
+        {% csrf_token %}
+        <div class="card" style="width: 16rem;">
+            <img src="{{item.photo.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{item.item_name}}</h5>
+                <p class="card-text">{{item.item_desc}}</p>
+                <p class="card-text"><b>{{item.item_price}}</b></p>
+                <input type="number" placeholder="Qty" name='qty'>
+                <input type="text" value="{{item.pk}}" style="display: none;" name="itempk">
+                <input type="submit" value="Add to Cart">
+            </div>
+        </div>
+    </form>
+    {% endfor %}
+</div>
+{% endblock body %} 

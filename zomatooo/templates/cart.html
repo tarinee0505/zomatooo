@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}
+cart
+{% endblock title %}
+{% block body %}
+<center>
+    <h1>Cart Page</h1>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Cart Id</th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Item Price</th>
+                <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+        {% for item in items %}
+        <tbody>
+            
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.qty}}</td>
+            <td>
+                <button class="btn btn-secondary"><a href="">Update</a></button>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+            
+        </tbody>
+        {% endfor %}
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+    </table>
+</center>
+{% endblock body %}
+
